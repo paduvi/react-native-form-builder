@@ -16,7 +16,6 @@ export function autoValidate(field) {
     let error = false;
     let errorMsg = '';
     if (field.required) {
-        console.log(field);
         if (!field.value) {
             error = true;
             errorMsg = `${field.label} is required`;
