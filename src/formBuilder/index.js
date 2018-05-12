@@ -83,7 +83,7 @@ export default class FormBuilder extends Component {
     }
 
     onValueChange(name, value) {
-        const valueObj = this.state[name];
+        const valueObj = Object.assign({}, this.state[name]);
         if (valueObj) {
             valueObj.value = value;
             // Not Validate fields only when autoValidation prop is false
@@ -107,12 +107,30 @@ export default class FormBuilder extends Component {
         }
     }
 
+    validate(callback) {
+        if (this.props.customValidation
+            && typeof this.props.customValidation === 'function') {
+            let error = false;
+            const values = {};
+            Object.keys(this.state).forEach((fieldName) => {
+                const field = this.state[fieldName];
+                if (field.name) {
+                    values[field.name] = Object.assign({}, field, this.props.customValidation(field));
+                    if (values[field.name].error) {
+                        error = true;
+                    }
+                }
+            });
+            this.setState(values, () => callback(error));
+        }
+    }
+
     // Returns the values of the fields
     getValues() {
         const values = {};
         Object.keys(this.state).forEach((fieldName) => {
             const field = this.state[fieldName];
-            if (field) {
+            if (field.name) {
                 values[field.name] = field.value;
             }
         });
