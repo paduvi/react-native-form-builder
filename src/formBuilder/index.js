@@ -115,18 +115,20 @@ export default class FormBuilder extends Component {
             let error = false;
             const values = {};
             Object.keys(this.state).forEach((fieldName) => {
-                const field = Object.assign({}, this.state[fieldName]);
+                const field = this.state[fieldName];
                 if (field.name) {
-                    Object.assign(field, autoValidate(field));
-                    if (field.error) {
+                    let value = Object.assign({}, field, autoValidate(field));
+
+                    if (value.error) {
                         error = true;
-                    } else {
-                        Object.assign(field, this.props.customValidation(field));
-                        if (field.error) {
-                            error = true;
-                        }
+                        values[field.name] = value;
+                        return;
                     }
-                    values[field.name] = field;
+                    value = Object.assign({}, field, this.props.customValidation(field));
+                    if (value.error) {
+                        error = true;
+                    }
+                    values[field.name] = value;
                 }
             });
             this.setState(values, () => callback(error));
