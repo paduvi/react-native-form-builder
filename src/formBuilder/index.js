@@ -52,6 +52,8 @@ export default class FormBuilder extends Component {
         this.setValues = this.setValues.bind(this);
         // forcefully set default values for particular fields
         this.setToDefault = this.setToDefault.bind(this);
+        // Validate fields
+        this.validate = this.validate.bind(this);
         /*
          forcefully set errors for a particular field
         this.setErrors = this.setErrors.bind(this);
