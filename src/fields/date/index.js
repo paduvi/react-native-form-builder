@@ -117,7 +117,7 @@ export default class DatePickerField extends Component {
                                         }}
                                     >
                                         <Text>
-                                            {(value && I18n.strftime(value, '%d %b %Y')) || 'None'}
+                                            {(value && I18n.strftime(value, '%d %b %Y')) || ''}
                                         </Text>
                                     </View>
                                 }
@@ -132,7 +132,7 @@ export default class DatePickerField extends Component {
                                         }}
                                     >
                                         <Text>
-                                            {(value && I18n.strftime(value, '%I:%M %p')) || 'None'}
+                                            {(value && I18n.strftime(value, '%I:%M %p')) || ''}
                                         </Text>
                                     </View>
                                 }

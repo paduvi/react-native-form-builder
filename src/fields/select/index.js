@@ -61,10 +61,10 @@ export default class SelectField extends Component {
     render() {
         const {theme, attributes, ErrorComponent} = this.props;
         const selectedText = attributes.multiple ?
-            attributes.value.length || 'None' :
+            attributes.value.length || '' :
             attributes.objectType ?
-                (attributes.value && attributes.value[attributes.labelKey]) || 'None'
-                : attributes.value || 'None';
+                (attributes.value && attributes.value[attributes.labelKey]) || ''
+                : attributes.value || '';
         return (
             <View>
                 <ListItem icon onPress={() => this.toggleModalVisible()}>

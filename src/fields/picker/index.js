@@ -76,7 +76,7 @@ export default class PickerField extends Component {
                         {attributes.label}
                     </Text>
                     <Text>
-                        {isValueValid ? attributes.value : 'None'}
+                        {isValueValid ? attributes.value : ''}
                     </Text>
                 </TouchableOpacity>
                 <ErrorComponent {...{attributes, theme}} />
