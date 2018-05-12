@@ -33,7 +33,7 @@ export default class PickerField extends Component {
                     }]}
                 >
                     <View style={{flex: 7}}>
-                        <Text style={{color: theme.inputColorPlaceholder}}>{attributes.label}</Text>
+                        <Text>{attributes.label}</Text>
                     </View>
                     <View style={{flex: 3}}>
                         <Picker
@@ -72,10 +72,10 @@ export default class PickerField extends Component {
                         paddingVertical: 10,
                     }}
                 >
-                    <Text style={{color: theme.inputColorPlaceholder}}>
+                    <Text>
                         {attributes.label}
                     </Text>
-                    <Text style={{color: theme.inputColorPlaceholder}}>
+                    <Text>
                         {isValueValid ? attributes.value : 'None'}
                     </Text>
                 </TouchableOpacity>
